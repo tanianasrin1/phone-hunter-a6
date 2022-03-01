@@ -37,7 +37,29 @@ const loadphoneDetails = phoneId => {
   const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
   fetch(url)
   .then(res => res.json())
-  .then(data => console.log(data.data.mainFeatures))
+  .then(data => displayphoneDeta(data.data))
 }
 
-const displayphoneDeta
+const displayphoneDeta = features => {
+  console.log(features)
+  const details = document.getElementById('search-details')
+  details.innerHTML = ''
+  const div = document.createElement('div')
+  div.innerHTML = `
+  <div class="card mt-4 mx-auto" style="width: 18rem;">
+  <img src="${features.image}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${features.name}</h5>
+    <h5 class="card-title">${features.releaseDate ? features.releaseDate:'No Result Found'}</h5>
+    <p class="card-text">Storage: ${features.mainFeatures.storage}</p>
+    <p> DisplaySixe: ${features.mainFeatures.displaySize}</p>
+    <p> Chipset: ${features.mainFeatures.chipSet}</p>
+    <p> Memory: ${features.mainFeatures.memory}</p>
+    
+  </div>
+</div> 
+  `
+  details.appendChild(div)
+  
+  
+}
