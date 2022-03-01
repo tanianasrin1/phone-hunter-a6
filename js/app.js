@@ -10,8 +10,9 @@ const searchPhnone = () => {
 
 const displaysearchphone = (phones) => {
     const searchResult = document.getElementById('search-result')
+    const limitData = phones.slice(0,20)
     searchResult.innerHTML = ''
-    phones.forEach(phone => {
+    limitData.forEach(phone => {
         // console.log(phone.slug)
         const div = document.createElement('div')
         div.classList.add('col-lg-4')
