@@ -9,11 +9,12 @@ const searchPhnone = () => {
 }
 
 const displaysearchphone = (phones) => {
+  // console.log(phones)
     const searchResult = document.getElementById('search-result')
     const limitData = phones.slice(0,20)
     searchResult.innerHTML = ''
     limitData.forEach(phone => {
-        // console.log(phone.slug)
+        // console.log(phone)
         const div = document.createElement('div')
         div.classList.add('col-lg-4')
         div.classList.add('mt-5')
@@ -52,11 +53,25 @@ const displayphoneDeta = features => {
   <div class="card-body">
     <h5 class="card-title">${features.name}</h5>
     <h5 class="card-title">${features.releaseDate ? features.releaseDate:'No Result Found'}</h5>
+    <h6> MainFeatures </h6>
     <p class="card-text">Storage: ${features.mainFeatures.storage}</p>
     <p> DisplaySixe: ${features.mainFeatures.displaySize}</p>
     <p> Chipset: ${features.mainFeatures.chipSet}</p>
     <p> Memory: ${features.mainFeatures.memory}</p>
-    
+    <h6> Others: </h6>
+    <p> WLAN: ${features.others.WLAN}</p>
+    <p> Bluetooth: ${features.others.Bluetooth}</p>
+    <p> GPS: ${features.others.GPS}</p>
+    <p> Radio: ${features.others.Radio}</p>
+    <p> USB: ${features.others.USB}</p>
+    <h6> sensors: </h6>
+    <p>  ${features.mainFeatures.sensors[0]}</p>
+    <p>  ${features.mainFeatures.sensors[2]}</p>
+    <p>  ${features.mainFeatures.sensors[3]}</p>
+    <p>  ${features.mainFeatures.sensors[4]}</p>
+    <p>  ${features.mainFeatures.sensors[5]}</p>
+    <p>  ${features.mainFeatures.sensors[6]}</p>
+  
   </div>
 </div> 
   `
