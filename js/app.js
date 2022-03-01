@@ -3,7 +3,7 @@ const searchPhnone = () => {
     const searchInput = document.getElementById('search-phone')
     const searchInputValue = searchInput.value
     const errrInput = document.getElementById('error')
-
+  
     if(searchInputValue == ''){
       errrInput.innerText = 'please Enter The value'
       searchInput.value = ''
@@ -16,9 +16,7 @@ const searchPhnone = () => {
       details.innerHTML= ''
     }  
     
-    else if(searchInputValue == null){
-      errrInput.innerText = 'please Enter The  valid Input'
-    }
+    
     
     else{
       const url = ` https://openapi.programming-hero.com/api/phones?search=${searchInputValue}`
@@ -41,7 +39,6 @@ const displaysearchphone = (phones) => {
     searchResult.innerHTML = ''
     limitData.forEach(phone => {
         // console.log(phone)
-        
         const div = document.createElement('div')
         div.classList.add('col-lg-4')
         div.classList.add('mt-5')
@@ -59,6 +56,7 @@ const displaysearchphone = (phones) => {
         
         searchResult.appendChild(div) 
     })
+
 }
 
 const loadphoneDetails = phoneId => {
@@ -67,13 +65,14 @@ const loadphoneDetails = phoneId => {
   fetch(url)
   .then(res => res.json())
   .then(data => displayphoneData(data.data))
+  
 }
 
 const displayphoneData = features => {
   // console.log(features)
-
   const details = document.getElementById('search-details')
- 
+  details.innerHTML = ''
+  console.log(details)
   const div = document.createElement('div')
   div.innerHTML = `
   <div class="card mt-4 mx-auto" style="width: 18rem;">
