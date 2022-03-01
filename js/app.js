@@ -33,7 +33,13 @@ const searchPhnone = () => {
 }
 
 const displaysearchphone = (phones) => {
- 
+    
+  //  if(searchInputValue == false){
+  //    document.getElementById('spinner').style.display = 'none'
+  //  }
+  //  else{
+  //   document.getElementById('spinner').style.display = 'block'
+  //  }
     const searchResult = document.getElementById('search-result')
     const limitData = phones.slice(0,20)
     searchResult.innerHTML = ''
@@ -98,7 +104,7 @@ const displayphoneData = features => {
     <p>  ${features.mainFeatures.sensors[3]}</p>
     <p>  ${features.mainFeatures.sensors[4]}</p>
     <p>  ${features.mainFeatures.sensors[5]}</p>
-    <p>  ${features.mainFeatures.sensors[6]}</p>
+    <p>  ${features.mainFeatures.sensors[6] ? features.mainFeatures.sensors[6]: 'No Found Result'}</p>
   
   </div>
   </div> 
