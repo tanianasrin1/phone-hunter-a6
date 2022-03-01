@@ -1,20 +1,47 @@
+const details = document.getElementById('search-details')
 const searchPhnone = () => {
     const searchInput = document.getElementById('search-phone')
     const searchInputValue = searchInput.value
-    searchInput.value = ''
-    const url = ` https://openapi.programming-hero.com/api/phones?search=${searchInputValue}`
-    fetch(url)
-    .then(res => res.json())
-    .then(data => displaysearchphone(data.data))
+    const errrInput = document.getElementById('error')
+
+    if(searchInputValue == ''){
+      errrInput.innerText = 'please Enter The value'
+      searchInput.value = ''
+      details.innerHTML= ''
+    }
+
+    else if(searchInputValue <= 0){
+      errrInput.innerText = 'please Enter The  valid Input' 
+      searchInput.value = ''
+      details.innerHTML= ''
+    }  
+    
+    else if(searchInputValue == null){
+      errrInput.innerText = 'please Enter The  valid Input'
+    }
+    
+    else{
+      const url = ` https://openapi.programming-hero.com/api/phones?search=${searchInputValue}`
+      fetch(url)
+      .then(res => res.json())
+      .then(data => displaysearchphone(data.data))
+      details.innerHTML= ''
+      searchInput.value = ''
+      error.innerHTML = ''
+      
+    }
+    
+  
 }
 
 const displaysearchphone = (phones) => {
-  // console.log(phones)
+ 
     const searchResult = document.getElementById('search-result')
     const limitData = phones.slice(0,20)
     searchResult.innerHTML = ''
     limitData.forEach(phone => {
         // console.log(phone)
+        
         const div = document.createElement('div')
         div.classList.add('col-lg-4')
         div.classList.add('mt-5')
@@ -39,13 +66,14 @@ const loadphoneDetails = phoneId => {
   const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
   fetch(url)
   .then(res => res.json())
-  .then(data => displayphoneDeta(data.data))
+  .then(data => displayphoneData(data.data))
 }
 
-const displayphoneDeta = features => {
-  console.log(features)
+const displayphoneData = features => {
+  // console.log(features)
+
   const details = document.getElementById('search-details')
-  details.innerHTML = ''
+ 
   const div = document.createElement('div')
   div.innerHTML = `
   <div class="card mt-4 mx-auto" style="width: 18rem;">
@@ -66,6 +94,7 @@ const displayphoneDeta = features => {
     <p> USB: ${features.others.USB}</p>
     <h6> sensors: </h6>
     <p>  ${features.mainFeatures.sensors[0]}</p>
+    <p>  ${features.mainFeatures.sensors[1]}</p>
     <p>  ${features.mainFeatures.sensors[2]}</p>
     <p>  ${features.mainFeatures.sensors[3]}</p>
     <p>  ${features.mainFeatures.sensors[4]}</p>
@@ -73,7 +102,7 @@ const displayphoneDeta = features => {
     <p>  ${features.mainFeatures.sensors[6]}</p>
   
   </div>
-</div> 
+  </div> 
   `
   details.appendChild(div)
   
