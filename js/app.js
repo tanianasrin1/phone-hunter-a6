@@ -35,9 +35,12 @@ const searchPhnone = () => {
 }
       //  searchPhnone
 const displaysearchphone = (phones) => {
-  if(phones == null) {
-    alert('pop')
-  }
+     if(phones.length == 0){
+       document.getElementById('error1').style.display = 'block'
+     }
+     else{
+      document.getElementById('error1').style.display = 'none'
+     }
     const searchResult = document.getElementById('search-result')
     const limitData = phones.slice(0,20)
     searchResult.innerHTML = ''
@@ -61,8 +64,8 @@ const displaysearchphone = (phones) => {
     })
   
 }
-
      //  searchDetails
+
 const loadphoneDetails = phoneId => {
   // console.log(phoneId)
   const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
