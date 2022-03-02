@@ -1,4 +1,5 @@
 const details = document.getElementById('search-details')
+const searchResult = document.getElementById('search-result')
 const searchPhnone = () => {
     const searchInput = document.getElementById('search-phone')
     const searchInputValue = searchInput.value
@@ -6,16 +7,21 @@ const searchPhnone = () => {
   
     // erreor handling
     if(searchInputValue == ''){
-      errrInput.innerText = 'please Enter The value'
+      errrInput.innerText = 'Please Enter The Value'
       searchInput.value = ''
-      details.innerHTML= ''
+      searchResult.innerHTML = ''
     }
      
+     else if(!isNaN(searchInputValue)){
+      errrInput.innerText = 'Please valid number'
+      searchInput.value = ''
+      searchResult.innerHTML = ''
+     }
 
     else if(searchInputValue <= 0){
-      errrInput.innerText = 'please Enter The  valid Input' 
+      errrInput.innerText = 'Please  valid number' 
       searchInput.value = ''
-      details.innerHTML= ''
+      searchResult.innerHTML = ''
     }  
     
   
@@ -37,9 +43,11 @@ const searchPhnone = () => {
 const displaysearchphone = (phones) => {
      if(phones.length == 0){
        document.getElementById('error1').style.display = 'block'
+       
      }
      else{
       document.getElementById('error1').style.display = 'none'
+      
      }
     const searchResult = document.getElementById('search-result')
     const limitData = phones.slice(0,20)
