@@ -4,11 +4,13 @@ const searchPhnone = () => {
     const searchInputValue = searchInput.value
     const errrInput = document.getElementById('error')
   
+    // erreor handling
     if(searchInputValue == ''){
       errrInput.innerText = 'please Enter The value'
       searchInput.value = ''
       details.innerHTML= ''
     }
+     
 
     else if(searchInputValue <= 0){
       errrInput.innerText = 'please Enter The  valid Input' 
@@ -16,8 +18,8 @@ const searchPhnone = () => {
       details.innerHTML= ''
     }  
     
-    
-    
+  
+
     else{
       const url = ` https://openapi.programming-hero.com/api/phones?search=${searchInputValue}`
       fetch(url)
@@ -26,20 +28,16 @@ const searchPhnone = () => {
       details.innerHTML= ''
       searchInput.value = ''
       error.innerHTML = ''
-      
+     
     }
     
-  
+   
 }
-
+      //  searchPhnone
 const displaysearchphone = (phones) => {
-    
-  //  if(searchInputValue == false){
-  //    document.getElementById('spinner').style.display = 'none'
-  //  }
-  //  else{
-  //   document.getElementById('spinner').style.display = 'block'
-  //  }
+  if(phones == null) {
+    alert('pop')
+  }
     const searchResult = document.getElementById('search-result')
     const limitData = phones.slice(0,20)
     searchResult.innerHTML = ''
@@ -59,12 +57,12 @@ const displaysearchphone = (phones) => {
   </div>
 </div>
         `
-        
         searchResult.appendChild(div) 
     })
-
+  
 }
 
+     //  searchDetails
 const loadphoneDetails = phoneId => {
   // console.log(phoneId)
   const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
