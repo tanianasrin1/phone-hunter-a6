@@ -93,11 +93,11 @@ const displayphoneData = features => {
     <p> Chipset: ${features.mainFeatures.chipSet}</p>
     <p> Memory: ${features.mainFeatures.memory}</p>
     <h6> Others: </h6>
-    <p> WLAN: ${features.others.WLAN}</p>
-    <p> Bluetooth: ${features.others.Bluetooth}</p>
-    <p> GPS: ${features.others.GPS}</p>
-    <p> Radio: ${features.others.Radio}</p>
-    <p> USB: ${features.others.USB}</p>
+    <p> WLAN: ${features?.others?.WLAN ? features.others.WLAN:'No' }</p>
+    <p> Bluetooth: ${features?.others?.Bluetooth ? features.others.Bluetooth: 'No'}</p>
+    <p> GPS: ${features?.others?.GPS ? features.others.GPS: 'No'}</p>
+    <p> Radio: ${features?.others?.Radio ? features.others.Radio: 'No'}</p>
+    <p> USB: ${features?.others?.USB ? features.others.USB: 'No'}</p>
     <h6> sensors: </h6>
     <p>  ${features.mainFeatures.sensors[0]}</p>
     <p>  ${features.mainFeatures.sensors[1]}</p>
